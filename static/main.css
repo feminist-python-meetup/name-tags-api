@@ -1,0 +1,36 @@
+/*
+A CSS file is basically a sequence of blocks that look like this:
+
+selector {
+    property1: value1;
+    property2: value2;
+}
+
+A selector tells CSS what element(s) a style should get applied to. E.g., if
+you want to apply something to all div elements, you'd write "div". If you want
+to apply something to all elements that have the class "myclass", you would
+write ".myclass".
+
+See https://www.w3schools.com/cssref/css_selectors.asp for more on CSS
+selectors.
+
+Properties are predefined names, like "color" or "border" or "width", that you
+can use to style something. For instance, for text, you can change the font
+size by setting "font-size" to something.
+
+See https://www.w3schools.com/cssref/default.asp for more on CSS properties.
+*/
+
+body {
+    /* Styles defined for body affect the whole document. Everything will have
+     * a black background and white text. */
+    color: white;
+    background-color: black;
+}
+
+span.big {
+    /* This affects all <span> elements that have a "class" attribute and that
+     * attribute contains "big". */
+    font-size: 24px;
+    color: red;
+}

@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <title>Feminst Python Name Tag Generator</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap/4.3.1/css/bootstrap.min.css') }}">
+  </head>
+  <body>
+    <br />
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Hello, nametags!</h1>
+        <p class="lead">Providing the awesome feminist python nametag script to you on the web.</p>
+        <hr class="my-4">
+        <p>So far we are providing a REST API. A webforms will follow soon.</p>
+        <p><i>A note regarding privacy:</i> everything you put into the store stays there until a periodic cleanup run.
+          The cleanup takes place daily at 5:23 in the morning (Vienna based timezone). Afterwards its gone. So make sure
+          to save your generated SVG files.
+        <div align="center">
+          <a class="btn btn-info btn-lg" href="{{ docs }}" role="button">Fetch it from GitHub</a>
+          <p><small>and check out the files for the roadmap</small></p>
+        </div>
+      </div>
+
+      <h2>How to use the REST API</h2>
+      <p>
+        Go to <code><a href="/api/v1">/api/v1</a></code>. There you will get the available endpoints.
+        So far only the listing of all nametags, of single nametags and the creation
+        of new nametags is implemented. Well, you can also retrieve the color map.
+      </p>
+      <p>For example, try those out:</p>
+      <ul>
+        <li><code><a href="/api/v1/nametags">/api/v1/nametags</a></code> - to retrieve all nametags that are in th store</li>
+        <li><code><a href="/api/v1/nametags/1">/api/v1/nametags/1</a></code> - to retrieve the name tag with the ID 1</li>
+        <li><code><a href="/api/v1/colormaps">/api/v1/colormaps</a></code> - to get (for now) the one color map available</li>
+        <li><code><a href="/api/v1/templates">/api/v1/templates</a></code> ... we'll ... to experience witchcraft!</li>
+      </ul>
+      <p>
+        To create a new nametag you have to use a POST request to the <code><a href="/api/v1/nametags">/api/v1/nametags</a></code>
+        endpoint. As request body you have to provide a json object with at least a <code>name</code> and a <code>pronouns</code>
+        value. Additionally you can use a <code>gradient</code> value which can be either <code>true</code> or <code>false </code>
+        (which is the default, if not provided), a <code>default_color</code> and a <code>fingerprint</code>, both as hex values.
+      </p>
+      <p>
+        You can do this by using some application like <a href="https://www.getpostman.com/">Postman</a>
+        or doing a <code>curl</code> call from the command line like this:
+      </p>
+      <pre>
+        curl -i -H "Content-Type: application/json" -X POST -d '{"name":"Frankie", "pronouns":"per, pers, pers", \
+            "gradient":"true", "default_color":"aa00aa", "fingerprint":"ABCDEF0123456789ABCDEF0123456789" }'\
+            https://nametags.tantemalkah.at/api/v1/nametags
+      </pre>
+      <h2>About</h2>
+      <p>
+        This builds on work by Ivana, Saara and Zoé from the <a href="https://feminist-python.diebin.at/">Feminist Python Meetups</a> in Vienna <code>&lt;3</code>.
+        Without their intros and the awesome name tag generator, this would not exist.
+      </p>
+      <p>
+        Also a lot of thanks to Miguel Grinberg for the <a href="https://github.com/miguelgrinberg/REST-tutorial">REST Tutorial</a>
+        as well as the <a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">Flask Mega-Tutorial</a>,
+        which helped me a lot in getting started with Flask and flask_restful.
+      </p>
+    </div>
+    <script src="{{ url_for('static', filename='jquery/jquery-3.4.0.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='popper/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrap/4.3.1/js/bootstrap.min.js') }}"></script>
+  </body>
+</html>
